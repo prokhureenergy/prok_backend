@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:mysql://prokhure.cf2oeauqgis9.us-east-1.rds.amazonaws.com:3306/prokhure
+    username: root
+    password: Sammy1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    open-in-view: false
+    generate-ddl: false
+    properties:
+      hibernate:
+        globally_quoted_identifiers: false
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+        transaction:
+          jta:
+            platform: org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform
+      ddl-auto: none
+
+# Logging Configuration
+logging:
+  level:
+    org.springframework: INFO
+    org.hibernate: INFO
+
+# Server Configuration
+server:
+  address: 0.0.0.0
+  port: 8080
+
+#Swagger end points
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    url: /prokhure_contract.yaml
+    config-url: /v3/api-docs/swagger-config
