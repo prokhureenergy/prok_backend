@@ -14,7 +14,7 @@
 	<name>erp</name>
 	<description>Prokhure Rest API</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 		<springdoc.version>2.3.0</springdoc.version>
 	</properties>
 	<dependencies>
@@ -116,7 +116,7 @@
 							<apiPackage>com.prokhure.erp.service.api</apiPackage>
 							<modelPackage>com.prokhure.erp.service.model</modelPackage>
 							<configOptions>
-								<dateLibrary>java17</dateLibrary>
+								<dateLibrary>java21</dateLibrary>
 								<delegatePattern>false</delegatePattern>
 								<interfaceOnly>true</interfaceOnly>
 								<library>spring-boot</library>
