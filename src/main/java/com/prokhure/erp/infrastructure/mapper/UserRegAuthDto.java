@@ -3,21 +3,24 @@ package com.prokhure.erp.infrastructure.mapper;
 import com.prokhure.erp.infrastructure.dto.AuthenticationDto;
 import com.prokhure.erp.infrastructure.dto.TokenDto;
 import com.prokhure.erp.infrastructure.entity.users.*;
+import com.prokhure.erp.infrastructure.entity.views.UsersView;
+import com.prokhure.erp.service.model.AppUsers;
 import com.prokhure.erp.service.model.BankRegistration;
 import com.prokhure.erp.service.model.Registration;
 
 public class UserRegAuthDto {
-    public Vendor fromModelToVendorEntity(Registration model) {
-        Vendor vendor = new Vendor();
-        vendor.setVendorName(model.getBusinessName());
-        vendor.setVendorRegistrationNumber(model.getBusinessRegistrationNumber());
-        vendor.setPhoneCountryCode(model.getPhoneCountryCode());
-        vendor.setPhoneNumber(model.getPhoneNumber());
-        vendor.setEmail(model.getEmail());
-        vendor.setVendorType(model.getRoleType());
-        vendor.setFirstName(model.getFirstName());
-        vendor.setLastName(model.getLastName());
-        return vendor;
+    public BusinessUser fromModelToVendorEntity(Registration model) {
+        BusinessUser businessUser = new BusinessUser();
+        businessUser.setBusinessName(model.getBusinessName());
+        businessUser.setBusinessRegistrationNumber(model.getBusinessRegistrationNumber());
+        businessUser.setPhoneCountryCode(model.getPhoneCountryCode());
+        businessUser.setPhoneNumber(model.getPhoneNumber());
+        businessUser.setEmail(model.getEmail());
+        businessUser.setBusinessType(model.getRoleType());
+        businessUser.setFirstName(model.getFirstName());
+        businessUser.setLastName(model.getLastName());
+        businessUser.setUserRole(model.getRole().name());
+        return businessUser;
     }
 
     public User fromModelToUserEntity(Registration model) {
@@ -56,5 +59,32 @@ public class UserRegAuthDto {
         userBankDetail.setBankUuid(bank.getBankId().toString());
         userBankDetail.setAccountNumber(bank.getAccountNumber());
         return  userBankDetail;
+    }
+    public AppUsers fromEntityToAppUserModel(UsersView entity) {
+        AppUsers appUsers = new AppUsers()
+                .name(entity.getName())
+                .businessCategory(entity.getBusinessCategory())
+                .businessRegNumber(entity.getBusinessRegNumber())
+                .businessType(entity.getBusinessType())
+                .email(entity.getEmail())
+                .isBusinessVerified(entity.getBusinessVerified())
+                .isEmailVerified(entity.getEmailVerified())
+                .businessDesc(entity.getBusinessDesc())
+                .phoneCountryCode(entity.getPhoneCountryCode())
+                .phoneNumber(entity.getPhoneNumber())
+                .userRole(entity.getUserRole())
+                .userUuid(entity.getUserUuid())
+                .status(entity.getStatus())
+                .verifiedById(entity.getVerifiedById());
+            return appUsers;
+                //.dateCreated(entity.getDateCreated())
+
+        /***
+
+         *     private String verifiedById;
+         * private LocalDateTime dateCreated;
+         *
+         *
+         */
     }
 }

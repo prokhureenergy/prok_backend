@@ -3,7 +3,7 @@ package com.prokhure.erp.application.controller;
 import com.prokhure.erp.domain.exception.NotFoundException;
 import com.prokhure.erp.domain.ports.api.UserServicePort;
 import com.prokhure.erp.domain.service.JwtUtilityService;
-import com.prokhure.erp.service.api.RegistrationAndAuthenticationApi;
+import com.prokhure.erp.service.api.UsersApi;
 import com.prokhure.erp.service.model.*;
 import com.prokhure.erp.service.model.Error;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.NativeWebRequest;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
-public class UserController implements RegistrationAndAuthenticationApi {
+public class UserController implements UsersApi {
 
     private final UserServicePort userServicePort;
 
@@ -28,6 +32,12 @@ public class UserController implements RegistrationAndAuthenticationApi {
     public UserController(UserServicePort userServicePort) {
         this.userServicePort = userServicePort;
     }
+
+    @Override
+    public Optional<NativeWebRequest> getRequest() {
+        return UsersApi.super.getRequest();
+    }
+
     @Override
     public ResponseEntity<ResponseDto> registerUser(Registration registration) {
         var response = userServicePort.processUserRegistration(registration);
@@ -66,5 +76,11 @@ public class UserController implements RegistrationAndAuthenticationApi {
             errors.add(error);
             throw new NotFoundException(errors);
         }
+    }
+
+    @Override
+    public ResponseEntity<UsersListResponse> listUsers(Integer page, Integer pageSize, String role, Date dateCreated) {
+        var response = userServicePort.listUsers(page,pageSize,role,dateCreated);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

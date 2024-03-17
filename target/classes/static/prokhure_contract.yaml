@@ -25,7 +25,7 @@ paths:
   /user/registration:
     post:
       tags:
-        - registration and authentication
+        - users
       summary: Register a new user
       description: Register a new user
       operationId: registerUser
@@ -77,7 +77,7 @@ paths:
   /user/login:
     post:
       tags:
-        - registration and authentication
+        - users
       summary: User Login
       description: user login
       operationId: userLogin
@@ -135,7 +135,7 @@ paths:
   /user/password/reset:
     post:
       tags:
-        - registration and authentication
+        - users
       summary: Reset password
       description: reset password
       operationId: resetPassword
@@ -187,7 +187,7 @@ paths:
   /user/password/reset/email:
     post:
       tags:
-        - registration and authentication
+        - users
       summary: Reset password by email
       description: reset password
       operationId: resetPasswordByEmail
@@ -239,7 +239,7 @@ paths:
   /user/token:
     post:
       tags:
-        - registration and authentication
+        - users
       summary: Resend or process token
       description: resend or process token
       operationId: resetOrProcessToken
@@ -360,6 +360,77 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BankDetailResponse'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '403':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '422':
+          description: Validation exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnProcessableEntity'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+  /user/list:
+    get:
+      tags:
+        - users
+      summary: Get all users in the system
+      description: 'get users paginated by role or date created'
+      operationId: listUsers
+      parameters:
+        - name: page
+          in: query
+          description: page number
+          required: true
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          description: page size
+          required: true
+          schema:
+            type: integer
+        - name: role
+          in: query
+          description: The user role
+          required: false
+          schema:
+            type: string
+        - name: dateCreated
+          in: query
+          description: Date user was created
+          required: false
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersListResponse'
         '400':
           description: Invalid ID supplied
           content:
@@ -823,6 +894,74 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BankDetail'
+
+    UsersListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "00"
+        description:
+          type: string
+          example: successful
+        data:
+          description: A list of the banks and their uuids
+          type: object
+          properties:
+            pageInfo:
+              description: Page Information
+              type: object
+              $ref: '#/components/schemas/PageInfo'
+            users:
+              description: List of users
+              type: array
+              items:
+                $ref: "#/components/schemas/AppUsers"
+
+    PageInfo:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+
+    AppUsers:
+      type: object
+      properties:
+        businessCategory:
+          type: string
+        businessDesc:
+          type: string
+        name:
+          type: string
+        businessRegNumber:
+          type: string
+        businessType:
+          type: string
+        email:
+          type: string
+        isBusinessVerified:
+          type: boolean
+        isEmailVerified:
+          type: boolean
+        phoneCountryCode:
+          type: string
+        phoneNumber:
+          type: string
+        status:
+          type: string
+        userRole:
+          type: string
+        userUuid:
+          type: string
+        verifiedById:
+          type: string
+        dateCreated:
+          type: string
+          format: date-time
+
+
     Errors:
       type: object
       properties:

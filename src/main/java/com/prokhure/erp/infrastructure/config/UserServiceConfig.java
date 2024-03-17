@@ -4,6 +4,7 @@ import com.prokhure.erp.domain.ports.spi.UserTrackerPersistencePort;
 import com.prokhure.erp.infrastructure.adapter.UserSqlTracker;
 import com.prokhure.erp.infrastructure.mapper.UserRegAuthDto;
 import com.prokhure.erp.infrastructure.repository.users.*;
+import com.prokhure.erp.infrastructure.repository.views.UsersViewRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,14 +31,14 @@ public class UserServiceConfig {
     public UserTrackerPersistencePort userTrackerPersistencePort(
             AuthenticationRepository authenticationRepository, RoleRepository roleRepository,
             AddressRepository addressRepository, PermissionRepository permissionRepository,
-            CompanyRepository companyRepository, UserRepository userRepository,
-            DocumentRepository documentRepository, VendorRepository vendorRepository,
+            UserRepository userRepository,
+            DocumentRepository documentRepository, BusinessUserRepository businessUserRepository,
             BankRepository bankRepository, UserBankDetailRepository userBankDetailRepository,
-            TokenRepository tokenRepository, UserRegAuthDto dtoMapper) {
+            TokenRepository tokenRepository, UsersViewRepository UsersViewRepository, UserRegAuthDto dtoMapper) {
         return new UserSqlTracker(authenticationRepository,roleRepository,
-                addressRepository,permissionRepository,companyRepository,userRepository,
-                documentRepository,vendorRepository,bankRepository,
-                userBankDetailRepository,tokenRepository,
+                addressRepository,permissionRepository,userRepository,
+                documentRepository, businessUserRepository,bankRepository,
+                userBankDetailRepository,tokenRepository,UsersViewRepository,
                 dtoMapper);
     }
 }

@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
 
 @Schema(name = "AuthenticationResponse_data_tokenDetail", description = "Token details")
 @JsonTypeName("AuthenticationResponse_data_tokenDetail")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-17T15:58:53.899225+01:00[Africa/Lagos]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-17T23:09:50.502328+01:00[Africa/Lagos]")
 public class AuthenticationResponseDataTokenDetail {
 
   private String token;

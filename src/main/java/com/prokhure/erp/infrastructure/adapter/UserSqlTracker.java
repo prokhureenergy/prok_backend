@@ -4,11 +4,15 @@ import com.prokhure.erp.domain.ports.spi.UserTrackerPersistencePort;
 import com.prokhure.erp.infrastructure.dto.AuthenticationDto;
 import com.prokhure.erp.infrastructure.dto.TokenDto;
 import com.prokhure.erp.infrastructure.entity.users.*;
+import com.prokhure.erp.infrastructure.entity.views.UsersView;
 import com.prokhure.erp.infrastructure.mapper.UserRegAuthDto;
 import com.prokhure.erp.infrastructure.repository.users.*;
+import com.prokhure.erp.infrastructure.repository.views.UsersViewRepository;
 import com.prokhure.erp.service.model.BankRegistration;
 import com.prokhure.erp.service.model.ProcessToken;
 import com.prokhure.erp.service.model.Registration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,34 +21,35 @@ import java.util.Optional;
 public class UserSqlTracker implements UserTrackerPersistencePort {
     private final AuthenticationRepository authenticationRepository;
     private final AddressRepository addressRepository;
-    private final CompanyRepository companyRepository;
     private final DocumentRepository documentRepository;
     private final PermissionRepository permissionRepository;
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
-    private final VendorRepository vendorRepository;
+    private final BusinessUserRepository businessUserRepository;
     private final TokenRepository tokenRepository;
     private final BankRepository bankRepository;
     private final UserBankDetailRepository userBankDetailRepository;
+    private final UsersViewRepository usersViewRepository;
     private final UserRegAuthDto dtoMapper;
 
     public UserSqlTracker(AuthenticationRepository authenticationRepository, RoleRepository roleRepository,
                           AddressRepository addressRepository, PermissionRepository permissionRepository,
-                          CompanyRepository companyRepository, UserRepository userRepository,
-                          DocumentRepository documentRepository, VendorRepository vendorRepository,
+                          UserRepository userRepository,
+                          DocumentRepository documentRepository, BusinessUserRepository businessUserRepository,
                           BankRepository bankRepository, UserBankDetailRepository userBankDetailRepository,
-                          TokenRepository tokenRepository,UserRegAuthDto dtoMapper) {
+                          TokenRepository tokenRepository,UsersViewRepository UsersViewRepository,
+                          UserRegAuthDto dtoMapper) {
         this.authenticationRepository = authenticationRepository;
         this.addressRepository = addressRepository;
-        this.companyRepository =  companyRepository;
         this.documentRepository = documentRepository;
-        this.vendorRepository = vendorRepository;
+        this.businessUserRepository = businessUserRepository;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.permissionRepository = permissionRepository;
         this.bankRepository = bankRepository;
         this.userBankDetailRepository = userBankDetailRepository;
         this.tokenRepository = tokenRepository;
+        this.usersViewRepository = UsersViewRepository;
         this.dtoMapper = dtoMapper;
     }
     @Override
@@ -54,8 +59,8 @@ public class UserSqlTracker implements UserTrackerPersistencePort {
     }
 
     @Override
-    public Vendor saveVendor(Registration model) {
-        return vendorRepository.save(dtoMapper.fromModelToVendorEntity(model));
+    public BusinessUser saveVendor(Registration model) {
+        return businessUserRepository.save(dtoMapper.fromModelToVendorEntity(model));
     }
 
     @Override
@@ -69,8 +74,8 @@ public class UserSqlTracker implements UserTrackerPersistencePort {
     }
 
     @Override
-    public Vendor getVendorByVendorId(String vendorId){
-        return vendorRepository.findVendorByUserId(vendorId).orElse(null);
+    public BusinessUser getVendorByVendorId(String vendorId){
+        return businessUserRepository.findBusinessUserByUserId(vendorId).orElse(null);
     }
 
     @Override
@@ -153,5 +158,25 @@ public class UserSqlTracker implements UserTrackerPersistencePort {
     @Override
     public UserBankDetail saveUserBankDetail(BankRegistration bank) {
         return userBankDetailRepository.save(dtoMapper.fromModelToUserBankEntity(bank));
+    }
+
+    @Override
+    public Page<UsersView> findUsersByRolePaginated(String userRole, Pageable pageable) {
+        return usersViewRepository.findByUserRole(userRole,pageable);
+    }
+
+    @Override
+    public Page<UsersView> findUsersByDateCreatedPaginated(LocalDateTime dateCreated, Pageable pageable) {
+        return usersViewRepository.findByDateCreated(dateCreated,pageable);
+    }
+
+    @Override
+    public Page<UsersView> findUsersByDateAndRolePaginated(LocalDateTime dateCreated, String userRole, Pageable pageable) {
+        return usersViewRepository.findByDateCreatedAndUserRole(dateCreated,userRole,pageable);
+    }
+
+    @Override
+    public Page<UsersView> findAllUsers(Pageable pageable) {
+        return usersViewRepository.findAll(pageable);
     }
 }

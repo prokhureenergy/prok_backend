@@ -3,7 +3,8 @@ README.md
 pom.xml
 src/gen/java/main/com/prokhure/erp/service/api/ApiUtil.java
 src/gen/java/main/com/prokhure/erp/service/api/BankApi.java
-src/gen/java/main/com/prokhure/erp/service/api/RegistrationAndAuthenticationApi.java
+src/gen/java/main/com/prokhure/erp/service/api/UsersApi.java
+src/gen/java/main/com/prokhure/erp/service/model/AppUsers.java
 src/gen/java/main/com/prokhure/erp/service/model/AuthUserResetPasswordRequest.java
 src/gen/java/main/com/prokhure/erp/service/model/Authentication.java
 src/gen/java/main/com/prokhure/erp/service/model/AuthenticationResponse.java
@@ -17,8 +18,11 @@ src/gen/java/main/com/prokhure/erp/service/model/BankDetails.java
 src/gen/java/main/com/prokhure/erp/service/model/BankRegistration.java
 src/gen/java/main/com/prokhure/erp/service/model/Error.java
 src/gen/java/main/com/prokhure/erp/service/model/Errors.java
+src/gen/java/main/com/prokhure/erp/service/model/PageInfo.java
 src/gen/java/main/com/prokhure/erp/service/model/ProcessToken.java
 src/gen/java/main/com/prokhure/erp/service/model/Registration.java
 src/gen/java/main/com/prokhure/erp/service/model/ResetPasswordByEmailRequest.java
 src/gen/java/main/com/prokhure/erp/service/model/ResponseDto.java
 src/gen/java/main/com/prokhure/erp/service/model/ResponseDtoData.java
+src/gen/java/main/com/prokhure/erp/service/model/UsersListResponse.java
+src/gen/java/main/com/prokhure/erp/service/model/UsersListResponseData.java
