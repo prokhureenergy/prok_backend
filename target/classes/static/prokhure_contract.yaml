@@ -13,6 +13,7 @@ info:
 
 servers:
   - url: http://localhost:8080
+  - url: https://prokhure-api.onrender.com
 tags:
   - name: oil and gas sector
     description: procurement in oil and gas sector

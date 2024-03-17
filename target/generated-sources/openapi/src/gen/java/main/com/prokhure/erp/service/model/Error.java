@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "Error", description = " **The below table describes custom error codes returned by various APIs currently**  | Code      | Message                     | | ----------| ----------------------------| | 404       | BAD REQUEST                 | | 404       | RESOURCE DOES NOT EXIST     | | 422       | UNPROCESSABLE ENTITY        | | 401       | UNAUTHORIZED                | | 403       | FORBIDDEN                   | | 500       | INTERNAL SERVER ERROR       | ")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-17T13:46:26.923943+01:00[Africa/Lagos]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-17T15:58:53.899225+01:00[Africa/Lagos]")
 public class Error {
 
   private String code;
