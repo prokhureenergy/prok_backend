@@ -12,9 +12,9 @@
 	<artifactId>erp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>erp</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Prokhure Rest API</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 		<springdoc.version>2.3.0</springdoc.version>
 	</properties>
 	<dependencies>
@@ -116,7 +116,7 @@
 							<apiPackage>com.prokhure.erp.service.api</apiPackage>
 							<modelPackage>com.prokhure.erp.service.model</modelPackage>
 							<configOptions>
-								<dateLibrary>java21</dateLibrary>
+								<dateLibrary>java17</dateLibrary>
 								<delegatePattern>false</delegatePattern>
 								<interfaceOnly>true</interfaceOnly>
 								<library>spring-boot</library>
