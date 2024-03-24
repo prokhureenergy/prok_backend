@@ -1,5 +1,8 @@
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/entity/products/Category.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/PageInfo.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/config/SeedData.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/adapter/CategorySqlService.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/service/Utilities.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/entity/users/Role.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/BankDetails.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/exception/NotFoundException.java
@@ -9,6 +12,7 @@
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/repository/users/AddressRepository.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/entity/users/Bank.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/repository/users/BusinessUserRepository.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/application/controller/CategoryController.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/entity/users/RolePermission.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/Errors.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/application/config/ProkhureServiceConfiguration.java
@@ -23,6 +27,7 @@
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/AuthenticationResponse.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/application/exception/GlobalExceptionHandler.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/Registration.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/api/CategoryApi.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/exception/ValidationException.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/entity/users/Address.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/repository/users/UserRepository.java
@@ -34,6 +39,7 @@
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/adapter/UserSqlTracker.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/api/UsersApi.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/repository/users/DocumentRepository.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/CategoryListResponseDto.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/entity/views/UsersView.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/AuthenticationResponseData.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/ProcessToken.java
@@ -44,9 +50,11 @@
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/repository/users/AuthenticationRepository.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/ports/api/UserServicePort.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/application/controller/BankController.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/CategoryRequestDto.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/entity/users/AddressType.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/service/UserServiceImpl.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/AuthenticationResponseDataTokenDetail.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/repository/products/CategoryRepository.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/BadRequest.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/Authentication.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/repository/users/RoleRepository.java
@@ -62,12 +70,19 @@
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/application/config/JwtAuthFilter.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/repository/views/UsersViewRepository.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/constants/TokenConst.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/ports/spi/CategoryPesistencePort.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/CategoryDto.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/mapper/UserRegAuthDto.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/service/CategoryServiceImpl.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/api/ApiUtil.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/CategoryListResponseDtoData.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/dto/TokenDto.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/ErpApplication.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/ResponseDto.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/dto/BankSeedDto.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/AppUsers.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/infrastructure/mapper/CategoryMapper.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/src/main/java/com/prokhure/erp/domain/ports/api/CategoryServicePort.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/BankDetail.java
+/Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/CategoryResponseDto.java
 /Users/oyinyeezeala/Documents/JavaProject/erp/target/generated-sources/openapi/src/gen/java/main/com/prokhure/erp/service/model/ResponseDtoData.java

@@ -23,6 +23,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 
+import static com.prokhure.erp.domain.service.Utilities.convertToLocalDateTime;
+import static com.prokhure.erp.domain.service.Utilities.throwNotException;
+
 public class UserServiceImpl implements UserServicePort {
     private  final String CHARACTERS = "0123456789";
     private  final int TOKEN_LENGTH = 6;
@@ -257,9 +260,7 @@ public class UserServiceImpl implements UserServicePort {
                 .description("successful");
     }
 
-    public static LocalDateTime convertToLocalDateTime(Date date) {
-        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-    }
+
 
     private ResponseDto processTokenResend(ProcessToken token) {
         var activeTokens = userTrackerPersistencePort.getAllActiveTokenPerUser(token.getPartyId().toString());
@@ -282,14 +283,7 @@ public class UserServiceImpl implements UserServicePort {
                 )));
     }
 
-    private  void throwNotException(String number, String No_previous_token_found) {
-        List<Error> errors = new ArrayList<>();
-        Error error = new Error();
-        error.setCode(number);
-        error.setMessage(No_previous_token_found);
-        errors.add(error);
-        throw new NotFoundException(errors);
-    }
+
 
     private ResponseDto processTokenValidation(ProcessToken token) {
         var activeToken = userTrackerPersistencePort.getActiveToken(token);

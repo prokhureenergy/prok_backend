@@ -62,7 +62,18 @@ public class SpringSecurityConfig {
                 AntPathRequestMatcher.antMatcher(HttpMethod.POST,
                         "/user/token"),
                 AntPathRequestMatcher.antMatcher(HttpMethod.GET,
-                        "/bank")};
+                        "/bank"),
+                AntPathRequestMatcher.antMatcher(HttpMethod.POST,
+                        "/category"),
+                AntPathRequestMatcher.antMatcher(HttpMethod.PATCH,
+                        "/category"),
+                AntPathRequestMatcher.antMatcher(HttpMethod.GET,
+                        "/category"),
+                AntPathRequestMatcher.antMatcher(HttpMethod.GET,
+                        "/category/**"),
+                AntPathRequestMatcher.antMatcher(HttpMethod.PATCH,
+                        "/category/**")
+        };
     }
 
 

@@ -1,8 +1,11 @@
 package com.prokhure.erp.application.config;
 
 import com.prokhure.erp.domain.config.UserDetailsServiceImpl;
+import com.prokhure.erp.domain.ports.api.CategoryServicePort;
 import com.prokhure.erp.domain.ports.api.UserServicePort;
+import com.prokhure.erp.domain.ports.spi.CategoryPesistencePort;
 import com.prokhure.erp.domain.ports.spi.UserTrackerPersistencePort;
+import com.prokhure.erp.domain.service.CategoryServiceImpl;
 import com.prokhure.erp.domain.service.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +27,13 @@ public class ProkhureServiceConfiguration {
             UserTrackerPersistencePort userTrackerPersistencePort
     ){
         return new UserDetailsServiceImpl(userTrackerPersistencePort);
+    }
+
+    @Bean
+    public CategoryServicePort categoryService(
+            CategoryPesistencePort categoryServicePort
+    ){
+        return new CategoryServiceImpl(categoryServicePort);
     }
 
 }

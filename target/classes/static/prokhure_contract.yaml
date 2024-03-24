@@ -610,6 +610,284 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
 
+  /category:
+    post:
+      tags:
+        - category
+      summary: Add category
+      description: Add a new category
+      operationId: addCategory
+      requestBody:
+        description: Create a category
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponseDto'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '403':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '422':
+          description: Validation exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnProcessableEntity'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+    patch:
+      tags:
+        - category
+      summary: Update Category
+      description: update category
+      operationId: updateCategory
+      requestBody:
+        description: Update category
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponseDto'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '403':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '422':
+          description: Validation exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnProcessableEntity'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+    get:
+      tags:
+        - category
+      summary: Get all categories in the system
+      description: 'get categories paginated by status or date created'
+      operationId: listCategories
+      parameters:
+        - name: page
+          in: query
+          description: page number
+          required: true
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          description: page size
+          required: true
+          schema:
+            type: integer
+        - name: status
+          in: query
+          description: The category status
+          required: false
+          schema:
+            type: string
+        - name: dateCreated
+          in: query
+          description: Date category was created
+          required: false
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryListResponseDto'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '403':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '422':
+          description: Validation exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnProcessableEntity'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+  /category/{categoryId}:
+    get:
+      tags:
+        - category
+      summary: Get all categories
+      description: Get category by Id
+      operationId: getCategoryById
+      parameters:
+        - name: categoryId
+          in: path
+          description: ID of the category that needs to be retreived
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponseDto'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '403':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '422':
+          description: Validation exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnProcessableEntity'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+    patch:
+      tags:
+        - category
+      summary: Update category status by category Id
+      description: update category by Id for each catgory
+      operationId: updateCategoryById
+      parameters:
+        - name: categoryId
+          in: path
+          description: ID of the category that status needs to be toggled
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponseDto'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '403':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '422':
+          description: Validation exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnProcessableEntity'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
 components:
   schemas:
     Registration:
@@ -961,6 +1239,92 @@ components:
           type: string
           format: date-time
 
+    CategoryRequestDto:
+      type: object
+      properties:
+        categoryId:
+          type: string
+          format: uuid
+          description: The unique identifier for the category
+        name:
+          type: string
+          description: The name of the category
+        description:
+          type: string
+          description: The description of the category
+        parentCategory:
+          type: string
+          description: The parent category of the category
+      required:
+        - name
+
+    CategoryResponseDto:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "00"
+        description:
+          type: string
+          example: successful
+        data:
+          description: A list of the banks and their uuids
+          type: object
+          $ref: '#/components/schemas/CategoryDto'
+
+    CategoryDto:
+      type: object
+      properties:
+        categoryId:
+          type: string
+          format: uuid
+          description: The unique identifier for the category
+        name:
+          type: string
+          description: The name of the category
+        description:
+          type: string
+          description: The description of the category
+        parentCategory:
+          type: string
+          description: The parent category of the category
+        dateCreated:
+          type: string
+          format: date-time
+          description: The date and time when the category was created
+        dateUpdated:
+          type: string
+          format: date-time
+          description: The date and time when the category was last updated
+        createdBy:
+          type: string
+          description: The user who created the category
+        status:
+          type: string
+          description: The status of the category
+
+    CategoryListResponseDto:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "00"
+        description:
+          type: string
+          example: successful
+        data:
+          description: A list of the banks and their uuids
+          type: object
+          properties:
+            pageInfo:
+              description: Page Information
+              type: object
+              $ref: '#/components/schemas/PageInfo'
+            categories:
+              description: List of users
+              type: array
+              items:
+                $ref: "#/components/schemas/CategoryDto"
 
     Errors:
       type: object

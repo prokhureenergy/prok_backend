@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
 
 @Schema(name = "ResponseDto_data", description = "The data object containing partyId (UUID) and message (string)")
 @JsonTypeName("ResponseDto_data")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-17T23:09:50.502328+01:00[Africa/Lagos]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-24T19:59:54.291948+01:00[Africa/Lagos]")
 public class ResponseDtoData {
 
   private UUID partyId;

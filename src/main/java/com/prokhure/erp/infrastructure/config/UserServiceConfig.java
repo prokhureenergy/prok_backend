@@ -1,8 +1,12 @@
 package com.prokhure.erp.infrastructure.config;
 
+import com.prokhure.erp.domain.ports.spi.CategoryPesistencePort;
 import com.prokhure.erp.domain.ports.spi.UserTrackerPersistencePort;
+import com.prokhure.erp.infrastructure.adapter.CategorySqlService;
 import com.prokhure.erp.infrastructure.adapter.UserSqlTracker;
+import com.prokhure.erp.infrastructure.mapper.CategoryMapper;
 import com.prokhure.erp.infrastructure.mapper.UserRegAuthDto;
+import com.prokhure.erp.infrastructure.repository.products.CategoryRepository;
 import com.prokhure.erp.infrastructure.repository.users.*;
 import com.prokhure.erp.infrastructure.repository.views.UsersViewRepository;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +32,11 @@ public class UserServiceConfig {
     }
 
     @Bean
+    public CategoryMapper categoryMapper() {
+        return new CategoryMapper();
+    }
+
+    @Bean
     public UserTrackerPersistencePort userTrackerPersistencePort(
             AuthenticationRepository authenticationRepository, RoleRepository roleRepository,
             AddressRepository addressRepository, PermissionRepository permissionRepository,
@@ -40,5 +49,11 @@ public class UserServiceConfig {
                 documentRepository, businessUserRepository,bankRepository,
                 userBankDetailRepository,tokenRepository,UsersViewRepository,
                 dtoMapper);
+    }
+
+    @Bean
+    public CategoryPesistencePort categoryPesistencePort(CategoryRepository categoryRepository,
+                                                         CategoryMapper categoryMapper) {
+        return new CategorySqlService(categoryRepository,categoryMapper);
     }
 }
